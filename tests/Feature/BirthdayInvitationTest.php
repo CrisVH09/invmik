@@ -24,7 +24,7 @@ class BirthdayInvitationTest extends TestCase
     public function test_social_metadata_is_present_without_javascript(): void
     {
         $this->get(route('home'))->assertOk()
-            ->assertSee('Angel cumple 18 | Capy Basketball')
+            ->assertSee('Angel cumple 18 | Capy Básquetbol')
             ->assertSee('property="og:image"', false)
             ->assertSee('lang="es"', false);
     }

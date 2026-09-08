@@ -10,7 +10,7 @@ const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 void createInertiaApp({
     title: (title) =>
-        title?.includes('| Capy Basketball')
+        title?.includes('| Capy Básquetbol')
             ? title
             : title
               ? `${title} - ${appName}`

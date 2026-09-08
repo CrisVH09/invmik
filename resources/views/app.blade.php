@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         @if(request()->routeIs('home'))
             <meta name="description" content="Estás invitado al partido más importante del año." inertia>
-            <meta property="og:title" content="{{ config('birthday.name') }} cumple {{ config('birthday.age') }} | Capy Basketball" inertia>
+            <meta property="og:title" content="{{ config('birthday.name') }} cumple {{ config('birthday.age') }} | Capy Básquetbol" inertia>
             <meta property="og:description" content="Estás invitado al partido más importante del año." inertia>
             <meta property="og:image" content="{{ url(config('birthday.image')) }}" inertia>
             <meta property="og:type" content="website" inertia>
@@ -46,7 +46,7 @@
         @viteReactRefresh
         @vite(['resources/css/app.css', 'resources/js/app.tsx', "resources/js/pages/{$page['component']}.tsx"])
         <x-inertia::head>
-            <title>{{ request()->routeIs('home') ? config('birthday.name').' cumple '.config('birthday.age').' | Capy Basketball' : config('app.name', 'Laravel') }}</title>
+            <title>{{ request()->routeIs('home') ? config('birthday.name').' cumple '.config('birthday.age').' | Capy Básquetbol' : config('app.name', 'Laravel') }}</title>
         </x-inertia::head>
     </head>
     <body class="font-sans antialiased">

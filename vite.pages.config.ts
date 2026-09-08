@@ -34,7 +34,7 @@ const escape = (value: string) =>
                 "'": '&#39;',
             })[character]!,
     );
-const title = escape(`${event.name} cumple ${event.age} | Capy Basketball`);
+const title = escape(`${event.name} cumple ${event.age} | Capy Básquetbol`);
 // Font stylesheet is emitted separately by the existing Laravel build.
 import { readdirSync } from 'node:fs';
 const fontCss = readdirSync('public/build/assets').find((name) =>

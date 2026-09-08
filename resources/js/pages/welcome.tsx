@@ -125,7 +125,7 @@ function Navigation({ ballImage }: { ballImage: string }) {
                         ['inicio', 'Inicio'],
                         ['detalles', 'Detalles'],
                         ['jugador', 'Jugador'],
-                        ['arena', 'Arena'],
+                        ['arena', 'Cancha'],
                     ].map(([id, label]) => (
                         <a
                             key={id}
@@ -137,7 +137,7 @@ function Navigation({ ballImage }: { ballImage: string }) {
                     ))}
                 </nav>
                 <span className="nav-edition">
-                    BIRTHDAY EDITION <span>↗</span>
+                    EDICIÓN CUMPLEAÑOS <span>↗</span>
                 </span>
             </div>
         </header>
@@ -150,17 +150,17 @@ function Hero({ event }: { event: EventData }) {
         <section id="inicio" className="capy-hero">
             <div className="hero-grid" aria-hidden="true" />
             <div className="hero-topline">
-                <span>THE NEXT CHAPTER STARTS HERE</span>
-                <span>EST. PLAYER 08 / EDITION {event.age}</span>
+                <span>EL SIGUIENTE CAPÍTULO EMPIEZA AQUÍ</span>
+                <span>JUGADOR 08 / EDICIÓN {event.age}</span>
             </div>
             <div className="hero-copy">
                 <p className="eyebrow hero-step-1">
-                    <span className="status-dot" /> PLAYER{' '}
+                    <span className="status-dot" /> JUGADOR{' '}
                     {String(event.playerNumber).padStart(2, '0')}{' '}
-                    <span className="eyebrow-divider" /> BIRTHDAY EDITION
+                    <span className="eyebrow-divider" /> EDICIÓN CUMPLEAÑOS
                 </p>
                 <h1 className="hero-step-2">
-                    LEVEL <span>{event.age}</span>
+                    NIVEL <span>{event.age}</span>
                     <img
                         className="title-ball"
                         src={event.ballImage}
@@ -170,14 +170,14 @@ function Hero({ event }: { event: EventData }) {
                         height="1280"
                     />
                     <br />
-                    <em>UNLOCKED</em>
+                    <em>DESBLOQUEADO</em>
                 </h1>
                 <div className="hero-name hero-step-2">
                     <strong>{event.name}</strong>
                     <span>
-                        {event.age}TH
+                        {event.age} AÑOS
                         <br />
-                        BIRTHDAY
+                        CUMPLEAÑOS
                     </span>
                 </div>
                 <p className="hero-description hero-step-2">
@@ -198,7 +198,7 @@ function Hero({ event }: { event: EventData }) {
                     <div>
                         <Clock3 />
                         <span>
-                            TIP-OFF<strong>{labels.time}</strong>
+                            HORA<strong>{labels.time}</strong>
                         </span>
                     </div>
                     <div>
@@ -225,22 +225,22 @@ function Hero({ event }: { event: EventData }) {
                 </div>
                 <div className="overall-badge">
                     <strong>99</strong>
-                    <span>OVR</span>
+                    <span>GRL</span>
                     <Zap size={13} />
                 </div>
                 <div className="player-tag">
                     <span className="status-dot" />
                     <span>
-                        CAPY HOOPER<small>BUILT FOR THE BIG NIGHT</small>
+                        CAPY CANASTERO<small>LISTO PARA LA GRAN NOCHE</small>
                     </span>
                     <b>#{event.playerNumber}</b>
                 </div>
                 <span className="art-caption">
-                    SIGNATURE PLAYER · LEGENDARY ENERGY
+                    JUGADOR ÚNICO · ENERGÍA LEGENDARIA
                 </span>
             </div>
             <a href="#detalles" className="scroll-cue">
-                <ArrowDown size={14} /> SCROLL TO PLAY
+                <ArrowDown size={14} /> DESLIZA PARA JUGAR
             </a>
         </section>
     );
@@ -276,8 +276,8 @@ function GameDetails({ event }: { event: EventData }) {
         <section id="detalles" className="capy-section reveal">
             <SectionTitle
                 index="01"
-                label="THE BIG MATCH"
-                title="GAME DETAILS"
+                label="EL GRAN PARTIDO"
+                title="DATOS DEL PARTIDO"
             />
             <div className="match-presentation">
                 <figure className="match-photo">
@@ -289,27 +289,27 @@ function GameDetails({ event }: { event: EventData }) {
                         height="1536"
                     />
                     <figcaption>
-                        <span>08 / SIGNATURE MOVE</span>
-                        <strong>MAKE IT COUNT.</strong>
+                        <span>08 / JUGADA ESTRELLA</span>
+                        <strong>QUE CADA TIRO CUENTE.</strong>
                     </figcaption>
                 </figure>
                 <div className="scoreboard">
                     <div className="scoreboard-top">
                         <span>
-                            <span className="status-dot" /> ONE NIGHT. ALL IN.
+                            <span className="status-dot" /> UNA NOCHE. CON TODO.
                         </span>
-                        <span>EXHIBITION GAME / {event.age}</span>
+                        <span>PARTIDO ESPECIAL / {event.age}</span>
                     </div>
                     <div className="matchup">
                         <div>
-                            <span>HOME TEAM</span>
+                            <span>EQUIPO LOCAL</span>
                             <strong>{event.name}</strong>
                         </div>
-                        <b>VS</b>
+                        <b>VS.</b>
                         <div>
-                            <span>NEXT CHAPTER</span>
+                            <span>NUEVA ETAPA</span>
                             <strong>
-                                LEVEL <em>{event.age}</em>
+                                NIVEL <em>{event.age}</em>
                             </strong>
                         </div>
                     </div>
@@ -317,19 +317,19 @@ function GameDetails({ event }: { event: EventData }) {
                         <div>
                             <Clock3 />
                             <span>
-                                TIP-OFF<strong>{labels.time}</strong>
+                                HORA<strong>{labels.time}</strong>
                             </span>
                         </div>
                         <div>
                             <CalendarDays />
                             <span>
-                                DATE<strong>{labels.date}</strong>
+                                FECHA<strong>{labels.date}</strong>
                             </span>
                         </div>
                         <div>
                             <MapPin />
                             <span>
-                                VENUE<strong>{labels.venue}</strong>
+                                LUGAR<strong>{labels.venue}</strong>
                             </span>
                         </div>
                     </div>
@@ -366,11 +366,11 @@ function Countdown({ date }: { date: string }) {
             className="countdown-section reveal"
             aria-label="Cuenta regresiva"
         >
-            <p className="eyebrow">THE WAIT IS PART OF THE GAME</p>
-            <h2>GAME STARTS IN</h2>
+            <p className="eyebrow">LA ESPERA ES PARTE DEL JUEGO</p>
+            <h2>EL PARTIDO EMPIEZA EN</h2>
             {remaining === 0 ? (
                 <p className="game-time" role="status">
-                    GAME TIME <Zap />
+                    ¡A JUGAR! <Zap />
                 </p>
             ) : (
                 <div
@@ -401,52 +401,52 @@ function Countdown({ date }: { date: string }) {
 
 function PlayerProfile({ event }: { event: EventData }) {
     const stats: [string, number][] = [
-        ['PARTY', 99],
-        ['STYLE', 96],
-        ['BASKETBALL', 94],
-        ['CHILL', 100],
-        ['ENERGY', 98],
-        ['CAPY POWER', 100],
+        ['FIESTA', 99],
+        ['ESTILO', 96],
+        ['BÁSQUETBOL', 94],
+        ['CALMA', 100],
+        ['ENERGÍA', 98],
+        ['PODER CAPY', 100],
     ];
     return (
         <section id="jugador" className="capy-section profile-section reveal">
             <div className="player-card">
                 <div className="card-shine" />
                 <span className="card-overall">
-                    <strong>99</strong>OVR
+                    <strong>99</strong>GRL
                 </span>
                 <span className="card-edition">
-                    BIRTHDAY
+                    EDICIÓN
                     <br />
-                    EDITION
+                    CUMPLEAÑOS
                 </span>
                 <Basketball className="card-ball" />
                 <img
                     src={event.profileImage}
-                    alt="Capy Hooper descansando en la banca con su jersey número 8"
+                    alt="Capy Canastero descansando en la banca con su jersey número 8"
                     loading="lazy"
                     width="1122"
                     height="1402"
                 />
                 <div className="card-bottom">
                     <span>
-                        PLAYER {String(event.playerNumber).padStart(2, '0')}
+                        JUGADOR {String(event.playerNumber).padStart(2, '0')}
                     </span>
                     <strong>{event.name}</strong>
                     <p>
-                        {event.age} YEARS <i /> CAPY HOOPER <i /> #
+                        {event.age} AÑOS <i /> CAPY CANASTERO <i /> #
                         {event.playerNumber}
                     </p>
                 </div>
             </div>
             <div className="profile-copy">
                 <p className="eyebrow">
-                    <span>02 /</span> MEET THE MVP
+                    <span>02 /</span> CONOCE A LA ESTRELLA
                 </p>
                 <h2>
-                    THE PLAYER.
+                    EL JUGADOR.
                     <br />
-                    <em>THE LEGEND.</em>
+                    <em>LA LEYENDA.</em>
                 </h2>
                 <p>
                     Nuevo nivel. La misma esencia.
@@ -474,7 +474,7 @@ function PlayerProfile({ event }: { event: EventData }) {
                     ))}
                 </div>
                 <div className="profile-signature">
-                    <Zap size={15} /> LEGENDARY VIBES. MAXIMUM CAPY POWER.
+                    <Zap size={15} /> ACTITUD LEGENDARIA. PODER CAPY AL MÁXIMO.
                 </div>
             </div>
         </section>
@@ -491,15 +491,15 @@ function Location({ event }: { event: EventData }) {
         <section id="arena" className="capy-section reveal">
             <SectionTitle
                 index="03"
-                label="THIS IS OUR HOME COURT"
-                title="THE ARENA"
+                label="ESTA ES NUESTRA CANCHA"
+                title="LA CANCHA"
             />
             <div className="venue-card">
                 <div className="venue-copy">
                     <span className="venue-icon">
                         <MapPin />
                     </span>
-                    <p className="eyebrow">WHERE THE NIGHT HAPPENS</p>
+                    <p className="eyebrow">AQUÍ SE JUEGA LA GRAN NOCHE</p>
                     <h3>{event.venue || 'La cancha está por revelarse.'}</h3>
                     <p>
                         {event.address ||
@@ -536,7 +536,9 @@ function Location({ event }: { event: EventData }) {
                         <div className="court-key left" />
                         <div className="court-key right" />
                     </div>
-                    <span className="court-caption">LIGHTS ON. GAME ON.</span>
+                    <span className="court-caption">
+                        LUCES LISTAS. ¡A JUGAR!
+                    </span>
                 </div>
             </div>
         </section>
@@ -569,20 +571,20 @@ function Closing({ event }: { event: EventData }) {
                 </div>
                 <div className="closing-content">
                     <p className="eyebrow">
-                        FINAL BUZZER? <span>NOT YET.</span>
+                        ¿SE ACABÓ EL PARTIDO? <span>TODAVÍA NO.</span>
                     </p>
                     <h2>
-                        GOOD FRIENDS.
+                        BUENOS AMIGOS.
                         <br />
-                        GREAT GAME.
+                        UN GRAN PARTIDO.
                         <br />
-                        <em>BIG NIGHT.</em>
+                        <em>UNA GRAN NOCHE.</em>
                     </h2>
                     <p>Nos vemos en la cancha.</p>
                     <div className="closing-tags">
                         <span>#{event.playerNumber}</span>
-                        <span>LEVEL {event.age}</span>
-                        <span>CAPY HOOPER</span>
+                        <span>NIVEL {event.age}</span>
+                        <span>CAPY CANASTERO</span>
                     </div>
                 </div>
             </section>
@@ -599,9 +601,9 @@ function Closing({ event }: { event: EventData }) {
                     CAPY <span>08</span>
                 </a>
                 <span>
-                    {event.name.toUpperCase()} / {event.age}TH BIRTHDAY
+                    {event.name.toUpperCase()} / CUMPLE {event.age} AÑOS
                 </span>
-                <a href="#inicio">BACK TO TOP ↑</a>
+                <a href="#inicio">VOLVER ARRIBA ↑</a>
             </footer>
         </>
     );
@@ -646,7 +648,7 @@ export default function Welcome({
         <div className="birthday-page">
             {!staticPage && (
                 <Head
-                    title={`${eventData.name} cumple ${eventData.age} | Capy Basketball`}
+                    title={`${eventData.name} cumple ${eventData.age} | Capy Básquetbol`}
                 >
                     <meta
                         name="description"
@@ -654,7 +656,7 @@ export default function Welcome({
                     />
                     <meta
                         property="og:title"
-                        content={`${eventData.name} cumple ${eventData.age} | Capy Basketball`}
+                        content={`${eventData.name} cumple ${eventData.age} | Capy Básquetbol`}
                     />
                     <meta
                         property="og:description"
@@ -672,13 +674,13 @@ export default function Welcome({
             <main id="contenido">
                 <Hero event={eventData} />
                 <div className="edition-strip" aria-hidden="true">
-                    <span>LEVEL {eventData.age} UNLOCKED</span>
+                    <span>NIVEL {eventData.age} DESBLOQUEADO</span>
                     <Basketball />
-                    <span>NOT JUST A BIRTHDAY. A NEW ERA.</span>
+                    <span>UN CUMPLEAÑOS. UNA NUEVA ETAPA.</span>
                     <Basketball />
-                    <span>CAPY HOOPER</span>
+                    <span>CAPY CANASTERO</span>
                     <Basketball />
-                    <span>PLAYER 08</span>
+                    <span>JUGADOR 08</span>
                 </div>
                 <GameDetails event={eventData} />
                 <Countdown date={eventData.date} />
