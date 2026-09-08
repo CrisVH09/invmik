@@ -33,7 +33,10 @@ type EventData = {
 };
 
 function eventLabels(event: EventData) {
-    const date = event.date ? new Date(event.date) : null;
+    const dateOnly = /^\d{4}-\d{2}-\d{2}$/.test(event.date);
+    const date = event.date
+        ? new Date(dateOnly ? `${event.date}T12:00:00Z` : event.date)
+        : null;
     const valid = date !== null && Number.isFinite(date.getTime());
     return {
         date: valid
@@ -41,12 +44,12 @@ function eventLabels(event: EventData) {
                   day: '2-digit',
                   month: 'long',
                   year: 'numeric',
-                  timeZone: event.timezone,
+                  timeZone: dateOnly ? 'UTC' : event.timezone,
               }).format(date)
             : 'Fecha por confirmar',
         time:
             event.time ||
-            (valid
+            (valid && !dateOnly
                 ? new Intl.DateTimeFormat('es-MX', {
                       hour: 'numeric',
                       minute: '2-digit',
@@ -337,7 +340,8 @@ function GameDetails({ event }: { event: EventData }) {
 }
 
 function Countdown({ date }: { date: string }) {
-    const birthdayDate = new Date(date).getTime();
+    const dateOnly = /^\d{4}-\d{2}-\d{2}$/.test(date);
+    const birthdayDate = dateOnly ? Number.NaN : new Date(date).getTime();
     const [remaining, setRemaining] = useState<number | null>(null);
     useEffect(() => {
         if (!Number.isFinite(birthdayDate)) return;
@@ -385,9 +389,11 @@ function Countdown({ date }: { date: string }) {
                 </div>
             )}
             <p className="countdown-note">
-                {!Number.isFinite(birthdayDate)
-                    ? 'La fecha del gran partido se anunciará pronto.'
-                    : 'Cada segundo nos acerca a una noche legendaria.'}
+                {dateOnly
+                    ? 'Fecha confirmada. La cuenta regresiva se activará al confirmar la hora.'
+                    : !Number.isFinite(birthdayDate)
+                      ? 'La fecha del gran partido se anunciará pronto.'
+                      : 'Cada segundo nos acerca a una noche legendaria.'}
             </p>
         </section>
     );
