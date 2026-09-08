@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    background: #07070a;
+}
+h1,
+h2,
+h3,
+p,
+figure {
+    margin: 0;
+}
+a {
+    color: inherit;
+}
+button {
+    font: inherit;
+    cursor: pointer;
+}
+img,
+svg {
+    vertical-align: middle;
+}

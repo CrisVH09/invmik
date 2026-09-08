@@ -1,5 +1,11 @@
 # Angel · Level 18 Unlocked
 
+## GitHub Pages
+
+Ejecutar `npm run build:pages` genera la invitación estática en `docs/`, usando los mismos componentes y datos de Laravel. Subir también `docs` al repositorio. En Settings → Pages seleccionar Deploy from a branch → main → /docs → Save. URL: https://crisvh09.github.io/invmik/.
+
+Repetir el comando y subir `docs` después de modificar datos, estilos o imágenes. PHP se usa únicamente para leer la configuración durante la compilación local; GitHub Pages no necesita ejecutarlo. Los recursos usan rutas relativas compatibles con `/invmik/`. `pages/index.html`, `resources/js/pages-static.tsx` y `vite.pages.config.ts` son la entrada y compilación estáticas.
+
 Invitación pública en `/`, integrada con Laravel, React e Inertia existentes. Sin dependencias nuevas, RSVP ni formularios en la invitación.
 
 ## Personalización

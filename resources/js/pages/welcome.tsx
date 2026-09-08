@@ -601,7 +601,13 @@ function Closing({ event }: { event: EventData }) {
     );
 }
 
-export default function Welcome({ eventData }: { eventData: EventData }) {
+export default function Welcome({
+    eventData,
+    staticPage = false,
+}: {
+    eventData: EventData;
+    staticPage?: boolean;
+}) {
     useEffect(() => {
         const sections = document.querySelectorAll('.reveal');
         if (
@@ -632,25 +638,27 @@ export default function Welcome({ eventData }: { eventData: EventData }) {
     }, []);
     return (
         <div className="birthday-page">
-            <Head
-                title={`${eventData.name} cumple ${eventData.age} | Capy Basketball`}
-            >
-                <meta
-                    name="description"
-                    content="Estás invitado al partido más importante del año."
-                />
-                <meta
-                    property="og:title"
-                    content={`${eventData.name} cumple ${eventData.age} | Capy Basketball`}
-                />
-                <meta
-                    property="og:description"
-                    content="Estás invitado al partido más importante del año."
-                />
-                <meta property="og:image" content={eventData.image} />
-                <meta property="og:type" content="website" />
-                <meta name="theme-color" content="#07070A" />
-            </Head>
+            {!staticPage && (
+                <Head
+                    title={`${eventData.name} cumple ${eventData.age} | Capy Basketball`}
+                >
+                    <meta
+                        name="description"
+                        content="Estás invitado al partido más importante del año."
+                    />
+                    <meta
+                        property="og:title"
+                        content={`${eventData.name} cumple ${eventData.age} | Capy Basketball`}
+                    />
+                    <meta
+                        property="og:description"
+                        content="Estás invitado al partido más importante del año."
+                    />
+                    <meta property="og:image" content={eventData.image} />
+                    <meta property="og:type" content="website" />
+                    <meta name="theme-color" content="#07070A" />
+                </Head>
+            )}
             <a className="skip-link" href="#contenido">
                 Saltar al contenido
             </a>
