@@ -4,10 +4,9 @@ return [
     'name' => 'Angel',
     'age' => 18,
     'playerNumber' => 8,
-    // Date only until the time is confirmed; then use ISO 8601 with timezone.
-    'date' => '2026-09-19',
+    'date' => '2026-09-19T16:00:00-06:00',
     'timezone' => 'America/Mexico_City',
-    'time' => '',
+    'time' => '16:00',
     'venue' => 'Fraccionamiento El Buen Suceso',
     'address' => 'José Ortega y Gasset #39, Toluca',
     'reference' => '',
