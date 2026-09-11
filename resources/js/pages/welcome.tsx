@@ -137,7 +137,7 @@ function Navigation({ ballImage }: { ballImage: string }) {
                     ))}
                 </nav>
                 <span className="nav-edition">
-                    EDICIÓN CUMPLEAÑOS <span>↗</span>
+                    FIESTA SORPRESA <span>↗</span>
                 </span>
             </div>
         </header>
@@ -150,14 +150,18 @@ function Hero({ event }: { event: EventData }) {
         <section id="inicio" className="capy-hero">
             <div className="hero-grid" aria-hidden="true" />
             <div className="hero-topline">
-                <span>EL SIGUIENTE CAPÍTULO EMPIEZA AQUÍ</span>
+                <span>SHHH… ¡ES UNA SORPRESA!</span>
                 <span>JUGADOR 08 / EDICIÓN {event.age}</span>
             </div>
             <div className="hero-copy">
+                <div className="surprise-stamp hero-step-1">
+                    <span>SHHH… ÉL NO LO SABE</span>
+                    <strong>¡FIESTA SORPRESA!</strong>
+                </div>
                 <p className="eyebrow hero-step-1">
                     <span className="status-dot" /> JUGADOR{' '}
                     {String(event.playerNumber).padStart(2, '0')}{' '}
-                    <span className="eyebrow-divider" /> EDICIÓN CUMPLEAÑOS
+                    <span className="eyebrow-divider" /> FIESTA SORPRESA
                 </p>
                 <h1 className="hero-step-2">
                     NIVEL <span>{event.age}</span>
@@ -181,12 +185,12 @@ function Hero({ event }: { event: EventData }) {
                     </span>
                 </div>
                 <p className="hero-description hero-step-2">
-                    Prepárate para el partido
+                    ¡Vamos a sorprender a {event.name}!
                     <br />
-                    más importante del año.
+                    No le cuentes nada ni le compartas esta invitación.
                 </p>
                 <a className="capy-button hero-step-5" href="#detalles">
-                    ENTRA AL JUEGO <ArrowUpRight size={18} />
+                    CONOCE EL PLAN <ArrowUpRight size={18} />
                 </a>
                 <div className="hero-event hero-step-5">
                     <div>
@@ -231,7 +235,7 @@ function Hero({ event }: { event: EventData }) {
                 <div className="player-tag">
                     <span className="status-dot" />
                     <span>
-                        CAPY CANASTERO<small>LISTO PARA LA GRAN NOCHE</small>
+                        CAPY CANASTERO<small>ÉL TODAVÍA NO LO SABE</small>
                     </span>
                     <b>#{event.playerNumber}</b>
                 </div>
@@ -276,7 +280,7 @@ function GameDetails({ event }: { event: EventData }) {
         <section id="detalles" className="capy-section reveal">
             <SectionTitle
                 index="01"
-                label="EL GRAN PARTIDO"
+                label="EL PLAN SECRETO"
                 title="DATOS DEL PARTIDO"
             />
             <div className="match-presentation">
@@ -296,7 +300,7 @@ function GameDetails({ event }: { event: EventData }) {
                 <div className="scoreboard">
                     <div className="scoreboard-top">
                         <span>
-                            <span className="status-dot" /> UNA NOCHE. CON TODO.
+                            <span className="status-dot" /> ¡QUE NO SE ENTERE!
                         </span>
                         <span>PARTIDO ESPECIAL / {event.age}</span>
                     </div>
@@ -339,6 +343,43 @@ function GameDetails({ event }: { event: EventData }) {
     );
 }
 
+function SecretPlan({ event }: { event: EventData }) {
+    const rules = [
+        [
+            '01',
+            'GUARDA EL SECRETO',
+            `${event.name} aún no sabe nada. No le cuentes el plan ni le compartas esta invitación.`,
+        ],
+        [
+            '02',
+            'SIN PISTAS EN REDES',
+            'Espera a que pase la sorpresa para subir fotos o historias. Por ahora, nada de etiquetas ni publicaciones sobre la fiesta.',
+        ],
+        [
+            '03',
+            `NOS VEMOS A LAS ${eventLabels(event).time}`,
+            'Llega puntual para que podamos preparar la sorpresa juntos. ¡Contamos contigo!',
+        ],
+    ];
+    return (
+        <section className="capy-section secret-plan reveal" aria-labelledby="secret-plan-title">
+            <p className="secret-kicker">SOLO PARA EL EQUIPO INVITADO</p>
+            <h2 id="secret-plan-title">MISIÓN: <em>SORPRENDER A {event.name.toUpperCase()}</em></h2>
+            <p className="secret-intro">Ayúdanos a hacer de este cumpleaños una gran sorpresa con tres detalles:</p>
+            <div className="secret-rules">
+                {rules.map(([number, title, description]) => (
+                    <article className="secret-rule" key={number}>
+                        <span className="secret-number" aria-hidden="true">{number}</span>
+                        <h3>{title}</h3>
+                        <p>{description}</p>
+                    </article>
+                ))}
+            </div>
+            <p className="secret-reminder">TODO LISTO PARA CELEBRAR.<strong>¡SOLO FALTA GUARDAR EL SECRETO!</strong></p>
+        </section>
+    );
+}
+
 function Countdown({ date }: { date: string }) {
     const dateOnly = /^\d{4}-\d{2}-\d{2}$/.test(date);
     const birthdayDate = dateOnly ? Number.NaN : new Date(date).getTime();
@@ -366,11 +407,11 @@ function Countdown({ date }: { date: string }) {
             className="countdown-section reveal"
             aria-label="Cuenta regresiva"
         >
-            <p className="eyebrow">LA ESPERA ES PARTE DEL JUEGO</p>
-            <h2>EL PARTIDO EMPIEZA EN</h2>
+            <p className="eyebrow">GUARDA EL SECRETO HASTA EL FINAL</p>
+            <h2>LA SORPRESA EMPIEZA EN</h2>
             {remaining === 0 ? (
                 <p className="game-time" role="status">
-                    ¡A JUGAR! <Zap />
+                    ¡SORPRESA! <Zap />
                 </p>
             ) : (
                 <div
@@ -393,7 +434,7 @@ function Countdown({ date }: { date: string }) {
                     ? 'Fecha confirmada. La cuenta regresiva se activará al confirmar la hora.'
                     : !Number.isFinite(birthdayDate)
                       ? 'La fecha del gran partido se anunciará pronto.'
-                      : 'Cada segundo nos acerca a una noche legendaria.'}
+                      : 'Llega puntual a la hora indicada para que preparemos juntos la sorpresa.'}
             </p>
         </section>
     );
@@ -451,8 +492,8 @@ function PlayerProfile({ event }: { event: EventData }) {
                 <p>
                     Nuevo nivel. La misma esencia.
                     <br />
-                    {event.name} cumple {event.age} y este partido se juega con
-                    su mejor equipo: ustedes.
+                    {event.name} cumple {event.age} y vamos a celebrarlo con
+                    su mejor equipo: ustedes. Él todavía no sabe nada.
                 </p>
                 <div className="stats">
                     {stats.map(([label, value]) => (
@@ -571,16 +612,19 @@ function Closing({ event }: { event: EventData }) {
                 </div>
                 <div className="closing-content">
                     <p className="eyebrow">
-                        ¿SE ACABÓ EL PARTIDO? <span>TODAVÍA NO.</span>
+                        ¿LA REGLA DEL EQUIPO? <span>GUARDAR EL SECRETO.</span>
                     </p>
                     <h2>
                         BUENOS AMIGOS.
                         <br />
-                        UN GRAN PARTIDO.
+                        UN PLAN SECRETO.
                         <br />
-                        <em>UNA GRAN NOCHE.</em>
+                        <em>UNA GRAN SORPRESA.</em>
                     </h2>
-                    <p>Nos vemos en la cancha.</p>
+                    <p>
+                        No publiques la invitación en redes ni etiquetes a{' '}
+                        {event.name}. ¡Que se entere cuando llegue!
+                    </p>
                     <div className="closing-tags">
                         <span>#{event.playerNumber}</span>
                         <span>NIVEL {event.age}</span>
@@ -648,19 +692,19 @@ export default function Welcome({
         <div className="birthday-page">
             {!staticPage && (
                 <Head
-                    title={`${eventData.name} cumple ${eventData.age} | Capy Básquetbol`}
+                    title="El plan | Capy 08"
                 >
                     <meta
                         name="description"
-                        content="Estás invitado al partido más importante del año."
+                        content="Los detalles de nuestro próximo encuentro."
                     />
                     <meta
                         property="og:title"
-                        content={`${eventData.name} cumple ${eventData.age} | Capy Básquetbol`}
+                        content="El plan | Capy 08"
                     />
                     <meta
                         property="og:description"
-                        content="Estás invitado al partido más importante del año."
+                        content="Los detalles de nuestro próximo encuentro."
                     />
                     <meta property="og:image" content={eventData.image} />
                     <meta property="og:type" content="website" />
@@ -676,13 +720,14 @@ export default function Welcome({
                 <div className="edition-strip" aria-hidden="true">
                     <span>NIVEL {eventData.age} DESBLOQUEADO</span>
                     <Basketball />
-                    <span>UN CUMPLEAÑOS. UNA NUEVA ETAPA.</span>
+                    <span>FIESTA SORPRESA. GUARDA EL SECRETO.</span>
                     <Basketball />
                     <span>CAPY CANASTERO</span>
                     <Basketball />
                     <span>JUGADOR 08</span>
                 </div>
                 <GameDetails event={eventData} />
+                <SecretPlan event={eventData} />
                 <Countdown date={eventData.date} />
                 <PlayerProfile event={eventData} />
                 <Location event={eventData} />

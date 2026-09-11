@@ -8,7 +8,7 @@ return [
     'timezone' => 'America/Mexico_City',
     'time' => '16:00',
     'venue' => 'Fraccionamiento El Buen Suceso',
-    'address' => 'José Ortega y Gasset #39, Toluca',
+    'address' => 'José Ortega y Gasset #239, Toluca',
     'reference' => '',
     'mapsUrl' => '',
     'image' => '/images/capy-8.png',

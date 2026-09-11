@@ -133,8 +133,8 @@ html:has(.birthday-page) {
     margin: auto;
     position: relative;
     min-height: 740px;
-    height: calc(100svh - 82px);
-    max-height: 1000px;
+    height: auto;
+    max-height: none;
     padding: 115px max(48px, calc((100% - 1224px) /2)) 75px;
     display: grid;
     grid-template-columns: 1.05fr 1fr;
@@ -164,6 +164,7 @@ html:has(.birthday-page) {
 }
 .hero-copy {
     position: relative;
+    min-width: 0;
     z-index: 3;
     align-self: center;
 }
@@ -1682,4 +1683,137 @@ html:has(.birthday-page) {
     .section-heading h2 {
         font-size: clamp(30px, 8.5vw, 42px);
     }
+}
+/* Keep event details readable and inside the hero as its copy grows. */
+.birthday-page .hero-event {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.7fr);
+    gap: 20px 24px;
+    padding-top: 24px;
+    margin-top: 30px;
+}
+.birthday-page .hero-event > div:last-child {
+    grid-column: 1 / -1;
+}
+.birthday-page .hero-event svg {
+    display: block;
+    width: 19px;
+    height: 19px;
+}
+.birthday-page .hero-event span {
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    line-height: 1.5;
+}
+.birthday-page .hero-event strong {
+    font-size: clamp(15px, 1.5vw, 18px);
+    line-height: 1.45;
+    letter-spacing: 0;
+    margin-top: 6px;
+    overflow-wrap: anywhere;
+}
+@media (min-width: 701px) {
+    .capy-hero { padding-bottom: 100px; }
+}
+
+/* Surprise messaging stays prominent on desktop and mobile. */
+.surprise-stamp {
+    width: fit-content;
+    max-width: 100%;
+    margin-bottom: 26px;
+    padding: 16px 22px;
+    border: 2px solid #ff80bc;
+    border-radius: 8px;
+    background: #ff2d8d;
+    color: #07070a;
+    box-shadow: 7px 7px 0 #fff, 0 0 36px #ff2d8d40;
+    transform: rotate(-2deg);
+}
+.surprise-stamp span {
+    display: block;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+.surprise-stamp strong {
+    display: block;
+    margin-top: 5px;
+    font: 800 clamp(28px, 3.4vw, 48px)/1.05 'Barlow Condensed', Impact, sans-serif;
+}
+.birthday-page .hero-description {
+    font-size: clamp(18px, 1.8vw, 23px);
+    line-height: 1.55;
+    color: #f5e8f0;
+}
+.secret-plan {
+    background: radial-gradient(ellipse at top right, #ff2d8d20, transparent 65%);
+}
+.secret-kicker {
+    color: #ff80bc;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+.secret-plan h2 {
+    font: 800 clamp(38px, 5.5vw, 72px)/1.05 'Barlow Condensed', Impact, sans-serif;
+    margin: 0;
+}
+.secret-plan h2 em {
+    display: block;
+    font-style: normal;
+    color: #ff4b9d;
+}
+.secret-intro {
+    color: #ded4dc;
+    font-size: 20px;
+    line-height: 1.6;
+    margin: 22px 0 30px;
+}
+.secret-rules {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+.secret-rule {
+    padding: clamp(22px, 3vw, 36px);
+    background: #141017;
+    border: 1px solid #ff4b9d55;
+    border-top: 4px solid #ff4b9d;
+    border-radius: 12px;
+}
+.secret-number {
+    font: 800 48px/1 'Barlow Condensed', Impact, sans-serif;
+    color: #ff80bc;
+}
+.secret-rule h3 {
+    margin: 18px 0 12px;
+    font: 700 clamp(27px, 3vw, 36px)/1.1 'Barlow Condensed', Impact, sans-serif;
+    color: #fff;
+    text-wrap: balance;
+}
+.secret-rule p {
+    font-size: 17px;
+    line-height: 1.65;
+    color: #ded4dc;
+    margin: 0;
+}
+.secret-reminder {
+    padding: 24px;
+    margin-top: 24px;
+    background: #ff2d8d;
+    color: #07070a;
+    text-align: center;
+    border-radius: 8px;
+    font: 700 clamp(23px, 3vw, 34px)/1.2 'Barlow Condensed', Impact, sans-serif;
+}
+.secret-reminder strong { display: block; }
+@media (min-width: 701px) and (max-width: 1000px) {
+    .secret-rules { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+    .secret-rules { grid-template-columns: 1fr; }
+    .surprise-stamp { margin: 0 6px 28px 0; padding: 14px 16px; }
+    .surprise-stamp span { font-size: 10px; letter-spacing: 1.5px; }
+    .secret-intro { font-size: 18px; }
 }
